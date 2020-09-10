@@ -1,14 +1,51 @@
 ﻿
-@{
-    //Layout = "_TestLayout";
-    ViewData["Title"] = "Title of Test - Index";
-}
+    @model List<EZCourse.Controllers.TestController.User>;
+    @{
+        //Layout = "_TestLayout";
+        ViewData["Title"] = "Title of Test - Index";
+        //var users = ViewBag.Users as List<EZCourse.Controllers.TestController.User>;
+        var states = ViewData["States"] as List<EZCourse.Controllers.TestController.State>;
+    }
 
 
     <h1>Hi There, How are you doing, Am the Test - index </h1>
 
+    <!--Using data from Controller-->
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        <!--  foreach (var user in users) this is for ViewBag which is commented above-->
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    @user.Id
+                </td>
+                <td>
+                    @user.Name
+                </td>
+            </tr>
+        }
+
+        <br />
+        <h4>Possible States</h4>
+        <ul class="list-group">
+            @foreach (var state in states)
+            {
+                <li class="list-group-item">
+                    @state.StateOrigin
+                </li>
+            }
+        </ul>
+
+
+    </table>
+
     @section Scripts{
-        <script>
-            alert('I am Test - Index alert');
-        </script>    
+        <!--<script>
+              alert('I am Test - Index alert');
+          </script>
+         -->
     }

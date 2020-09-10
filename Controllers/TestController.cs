@@ -10,8 +10,35 @@ namespace EZCourse.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var users = new List<User>
+            {
+                new User {Id = 1, Name = "Mr. Blue"},
+                new User {Id = 2, Name = "Ms. Green"},
+                new User {Id = 1, Name = "Ma. Blue"},
+            };
+            var states = new List<State>
+            {
+                new State {StateOrigin = "Delta"},
+                new State {StateOrigin = "Lagos"},
+                new State {StateOrigin = "Abuja"},
+            };
+            //Three option to pass this list to view, 1st - ViewBag, 2nd - ViewData and the third is View(users)
+            //ViewBag is a dynamic object, while ViewData is a dictionary 
+            //ViewBag.Users = users;
+            ViewData["States"] = states;
+            return View(users);
         }
+
+        public class User
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+        }
+        public class State
+        {
+            public string StateOrigin { get; set; }
+        }
+
 
         //different method
         /*public string StringOut(int id, Person person)
