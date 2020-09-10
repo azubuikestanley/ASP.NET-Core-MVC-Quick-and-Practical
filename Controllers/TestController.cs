@@ -8,6 +8,11 @@ namespace EZCourse.Controllers
 {
     public class TestController : Controller
     {
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         //different method
         /*public string StringOut(int id, Person person)
             {
@@ -19,6 +24,7 @@ namespace EZCourse.Controllers
             return Content($"StringOut Action {id} -- {person.FirstName} {person.LastName}");
         }
         */
+
         public IActionResult JsonOut(int id, Person person)
         {
             var obj = new
